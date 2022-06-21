@@ -13,3 +13,6 @@
 * [ZGG内置类型-数组](chapter02-syntax/type_array.md)
 
 ### 标准库
+
+* [内置标准库](chapter03-libraries/builtins.md)
+  * [http](chapter03-libraries/builtins_http.md)
