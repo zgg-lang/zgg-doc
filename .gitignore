@@ -1,0 +1,4 @@
+*.sw?
+.*.sw?
+_book
+.DS_Store
