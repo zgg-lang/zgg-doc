@@ -87,10 +87,6 @@ const code = `
 `
 
 func main() {
-	var i interface{} = 123
-	if _, ok := i.(zgg.Val); ok {
-		fmt.Println("i is zgg.Val")
-	}
 	user := User{Coins: 10}
 	_, err := zgg.RunCode(code,
 		zgg.Var{"user", &user},   // 注入Go值，可直接注入
