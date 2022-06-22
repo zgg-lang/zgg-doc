@@ -13,7 +13,7 @@
 * [ZGG内置类型-字符串](chapter02-syntax/type_str.md)
 * [ZGG内置类型-数组](chapter02-syntax/type_array.md)
 * [ZGG的函数定义]()
-* [条件判断]()
+* [条件判断](chapter02-syntax/condition.md)
   * [if语句]()
   * [switch语句]()
   * [三目运算符]()
