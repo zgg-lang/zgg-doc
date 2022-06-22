@@ -17,13 +17,13 @@
   * [if语句]()
   * [switch语句]()
   * [三目运算符]()
-* [when表达式](chapter02-syntax/condition_whenexpr.md)
+  * [when表达式](chapter02-syntax/condition_whenexpr.md)
 * [循环控制]()
   * [for循环]()
   * [for in循环]()
   * [while循环]()
   * [do while循环]()
-* 
+
 ### 标准库
 
 * [内置标准库](chapter03-libraries/builtins.md)
