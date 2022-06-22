@@ -53,7 +53,7 @@ func main() {
 	} else {
 		fmt.Println("expr result:", result.(int64))
 	}
-    // 使用预编译结果进行表达式求值
+	// 使用预编译结果进行表达式求值
 	if compiled, err := zgg.CompileExpr(demoModule); err != nil {
 		panic(err)
 	} else if result, err := zgg.Eval(compiled, zgg.Var{"n", zgg.Val(10)}); err != nil {
