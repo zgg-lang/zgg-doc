@@ -27,13 +27,12 @@ json提供了JSON操作相关的函数
 ### <div id="find">func find(jsonpath, value)</div>
 通过jsonpath，获取value的指定字段内容
 
-***注：当传入value类型为Str或者Bytes时，find函数会先对value进行json.decode操作，即
+***注：当传入value类型为Str或者Bytes时，find函数会先对value进行json.decode操作，即***
 ```
 s := '{"a":1}'
 //以下两行是等价的
 @json.find('$.a', s)
 @json.find('$.a', @json.decode(s))
 ```
-***
 
 具体jsonpath的语法，请参考[github.com/oliveagle/jsonpath](https://pkg.go.dev/github.com/oliveagle/jsonpath@v0.0.0-20180606110733-2e52cf6e6852)
