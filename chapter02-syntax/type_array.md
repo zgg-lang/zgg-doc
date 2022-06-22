@@ -101,7 +101,7 @@ mapper支持多种不同类型：
 | 任意可执行对象 | mapper(item, index) |
 | Int或Str | item[mapper] |
 
-* Examples:
+#### Examples:
 ```
 zgg> [1, 2, 3].map(v => v * v)
 [1, 4, 9]
@@ -118,7 +118,7 @@ zgg> [[1, 2, 3], [2, 3, 4], [3, 4, 5]].map(1)
 
 符合条件的定义是：filterFunc(item, index)返回一个真值。真值的定义请看条件判断章节
 
-* Examples:
+#### Examples:
 ```
 zgg> seq(1, 10).filter(v => v % 2 == 0)
 [2, 4, 6, 8, 10]
@@ -144,7 +144,7 @@ for index, value in arr {
 * predict若为可执行对象：predict(item)返回真值
 * 否则: item == predict
 
-* Examples:
+#### Examples:
 ```
 zgg> seq(1, 10).find(4)
 4
@@ -155,7 +155,7 @@ undefined
 ### <div id="findIndex">findIndex(predict)</div>
 与find相似，区别在于findIndex返回的是元素的下标，找不到的时候返回-1
 
-* Examples:
+#### Examples:
 ```
 zgg> seq(1, 10).findIndex(4)
 3
@@ -167,20 +167,20 @@ zgg> seq(1, 10).findIndex(20)
 生成从a到b的数组。这里的a和b的类型不仅局限于Int，还支持所有实现了__next__协议和__eq__协议的对象。
 
 ### <div id="range1">func range(end)</div>
-* Example:
+#### Example:
 ```
 zgg> range(5)
 [0, 1, 2, 3, 4]
 ```
 
 ### <div id="range2">func range(begin, end)</div>
-* Example:
+#### Example:
 ```
 zgg> range(2, 5)
 [2, 3, 4]
 ```
 ### <div id="range3">func range(begin, end, step)</div>
-* Example:
+#### Example:
 ```
 zgg> range(2, 10, 3)
 [2, 5, 8]
