@@ -17,7 +17,7 @@
   * [if语句]()
   * [switch语句]()
   * [三目运算符]()
-  * [when表达式]()
+  * [when表达式](chapter02-syntax/condition_whenexpr.md)
 * [循环控制]()
   * [for循环]()
   * [for in循环]()
