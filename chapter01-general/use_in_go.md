@@ -4,7 +4,7 @@ ZGG语言从开发之初就支持在Go语言中使用（毕竟ZGG的开发团队
 
 ## 如何集成ZGG？
 
-### 第一步：按照依赖库
+### 第一步：安装依赖库
 
 ```
 go get github.com/zgg-lang/zgg-go
