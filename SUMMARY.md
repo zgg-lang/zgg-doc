@@ -16,3 +16,5 @@
 
 * [内置标准库](chapter03-libraries/builtins.md)
   * [http](chapter03-libraries/builtins_http.md)
+  * [json](chapter03-libraries/builtins_json.md)
+  * [random](chapter03-libraries/builtins_random.md)
