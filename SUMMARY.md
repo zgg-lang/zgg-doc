@@ -46,5 +46,5 @@
   * [sh -- TODO]()
   * [sys -- TODO]()
   * [template -- TODO]()
-  * [time -- TODO]()
+  * [time](chapter03-libraries/builtins_time.md)
   * [url -- TODO]()
