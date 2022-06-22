@@ -13,7 +13,7 @@ go get github.com/zgg-lang/zgg-go
 ### 第二步：参考下面例子完成代码集成
 
 #### 1.简单使用Demo（展示一下核心接口的用法）
-```
+```go
 package main
 
 import (
@@ -65,7 +65,7 @@ func main() {
 ```
 
 #### 2. 调用Go方法和对象
-```
+```go
 package main
 
 import (
