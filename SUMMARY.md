@@ -5,6 +5,7 @@
 
 * [ZGG简介](README.md)
 * [开始使用ZGG](chapter01-general/getstarted.md)
+* [在Go程序中嵌入ZGG脚本](chapter01-general/use_in_go.md)
 
 ### ZGG基本语法
 
