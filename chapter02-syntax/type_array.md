@@ -34,6 +34,8 @@ zgg> [1, 2, 3] * 0
 []
 ```
 
+***注：乘以0的时候，即重复0遍，必然返回空数组***
+
 ### 数组推导式
 
 ZGG支持通过类似Python的数组推导式生成新的数组。
@@ -42,19 +44,22 @@ ZGG支持通过类似Python的数组推导式生成新的数组。
 ```
 zgg> a := [1, 2, 3, 4, 5, 6]
 [1, 2, 3, 4, 5, 6]
+
 zgg> [item * item for item in a]
 [1, 4, 9, 16, 25, 36]
+
 zgg> [item * 2 for item in a if item % 2 == 0]
 [4, 8, 12]
+
 zgg> [v * 2 for v in 2..10] // 2..10在for..in里面相当于[2, 3, 4, 5, 6, 7, 8, 9, 10]，但不需要创建一个临时数组，效率更高
 [4, 6, 8, 10, 12, 14, 16, 18, 20]
+
 zgg> [v * 2 for v in 2..<10] // 2..<10在for..in里面相当于[2, 3, 4, 5, 6, 7, 8, 9]，但不需要创建一个临时数组，效率更高
 [4, 6, 8, 10, 12, 14, 16, 18]
+
 zgg> [v * 2 for v in 10]  // for .. in 10是for .. in 0..<10的简化写法
 [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
-
-***注：乘以0的时候，即重复0遍，必然返回空数组***
 
 ## 数组的内置方法
 
@@ -62,23 +67,121 @@ zgg> [v * 2 for v in 10]  // for .. in 10是for .. in 0..<10的简化写法
 
 | 方法名 | 作用 |
 |-------|------|
-| map | |
-| filter | |
-| reduce | |
-| each | |
-| push | 往数组末尾添加元素 |
-| slice | 获取数组切片 |
-| sort | 原地排序 |
-| join | 将数组各元素依次拼接为一个字符串 |
-| toMap | 将数组元素转为一个Map |
-| toGroup | 将数组元素分组 |
-| find  | 查找数组中出现的第一个符合预期的元素 |
-| findIndex  | 查找数组中出现的第一个符合预期的元素的下标 |
-| times  | // |
+| [map](#map ) | |
+| [filter](#filter ) | |
+| [reduce](#reduce ) | |
+| [each](#each ) | |
+| [push](#push ) | 往数组末尾添加元素 |
+| [slice](#slice ) | 获取数组切片 |
+| [sort](#sort ) | 原地排序 |
+| [join](#join ) | 将数组各元素依次拼接为一个字符串 |
+| [toMap](#toMap ) | 将数组元素转为一个Map |
+| [toGroup](#toGroup ) | 将数组元素分组 |
+| [find](#find  )  | 查找数组中出现的第一个符合预期的元素,找不到则返回undefined |
+| [findIndex](#findIndex  )  | 查找数组中出现的第一个符合预期的元素的下标,找不到则返回-1 |
+| [times](#times  )  | // |
 
-### map(mapper)
-### filter(filterFunc)
-### reduce(reducer, initialValue?)
-### each(callback)
-### find(predict)
-### findIndex(predict)
+## 生成数组的内建函数
+| 函数名 | 作用 |
+|-------|------|
+| [seq(a, b)](#seq) | 返回从a到b的数组。如：seq(1, 5)返回[1, 2, 3, 4, 5]。更多用法请看下面的详解 |
+| [range(end)](#range1) | 具体用法见详解|
+| [range(begin, end)](#range2) | 具体用法见详解|
+| [range(begin, end, step)](#range3) | 具体用法见详解|
+
+## 函数详解
+
+### <div id="map">map(mapper)</div>
+将数组每个元素根据mapper映射到指定形式，存放到新的数组中并返回。原数组内容不变
+
+mapper支持多种不同类型：
+
+| mapper类型 | 映射结果 |
+|-----------|----|
+| 任意可执行对象 | mapper(item, index) |
+| Int或Str | item[mapper] |
+
+* Examples:
+```
+zgg> [1, 2, 3].map(v => v * v)
+[1, 4, 9]
+zgg> [{x: 1}, {x: 2}, {x: 3}].map('x')
+[1, 2, 3]
+zgg> [{x: 1}, {x: 2}, {x: 3}].map('y')
+[undefined, undefined, undefined]
+zgg> [[1, 2, 3], [2, 3, 4], [3, 4, 5]].map(1)
+[2, 3, 4]
+```
+
+### <div id="filter">filter(filterFunc)</div>
+将原数组将符合条件的元素，依次放在新数组并返回。
+
+符合条件的定义是：filterFunc(item, index)返回一个真值。真值的定义请看条件判断章节
+
+* Examples:
+```
+zgg> seq(1, 10).filter(v => v % 2 == 0)
+[2, 4, 6, 8, 10]
+```
+
+### <div id="reduce">reduce(reducer, initialValue?)</div>
+### <div id="each">each(callback)</div>
+依次取数组元素，调用callback函数。以下两段代码时等价的：
+```
+arr.each(callback)
+```
+与
+```
+for index, value in arr {
+    callback(value, index)
+}
+```
+
+### <div id="find">find(predict)</div>
+找到第一个符合predict的元素并返回。当找不到符合元素时返回undefined
+
+符合条件的定义是：
+* predict若为可执行对象：predict(item)返回真值
+* 否则: item == predict
+
+* Examples:
+```
+zgg> seq(1, 10).find(4)
+4
+zgg> seq(1, 10).find(20)
+undefined
+```
+
+### <div id="findIndex">findIndex(predict)</div>
+与find相似，区别在于findIndex返回的是元素的下标，找不到的时候返回-1
+
+* Examples:
+```
+zgg> seq(1, 10).findIndex(4)
+3
+zgg> seq(1, 10).findIndex(20)
+-1
+```
+
+### <div id="seq">func seq(a, b)</div>
+生成从a到b的数组。这里的a和b的类型不仅局限于Int，还支持所有实现了__next__协议和__eq__协议的对象。
+
+### <div id="range1">func range(end)</div>
+* Example:
+```
+zgg> range(5)
+[0, 1, 2, 3, 4]
+```
+
+### <div id="range2">func range(begin, end)</div>
+* Example:
+```
+zgg> range(2, 5)
+[2, 3, 4]
+```
+### <div id="range3">func range(begin, end, step)</div>
+* Example:
+```
+zgg> range(2, 10, 3)
+[2, 5, 8]
+```

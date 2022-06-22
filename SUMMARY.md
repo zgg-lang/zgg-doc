@@ -11,7 +11,18 @@
 * [ZGG的变量](chapter02-syntax/variables.md)
 * [ZGG内置类型-字符串](chapter02-syntax/type_str.md)
 * [ZGG内置类型-数组](chapter02-syntax/type_array.md)
-
+* [ZGG的函数定义]()
+* [条件判断]()
+  * [if语句]()
+  * [switch语句]()
+  * [三运算符]()
+  * [when表达式]()
+* [循环控制]()
+  * [for循环]()
+  * [for in循环]()
+  * [while循环]()
+  * [do while循环]()
+* 
 ### 标准库
 
 * [内置标准库](chapter03-libraries/builtins.md)
