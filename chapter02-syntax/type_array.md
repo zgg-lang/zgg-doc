@@ -189,6 +189,71 @@ for index, value in arr {
 }
 ```
 
+### <div id="toMap">func toMap(keyMapper?, valueMapper?)</div>
+
+根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为元素被valueMapper映射后的结果。
+
+注：
+* keyMapper和valueMapper都可以缺省，缺省时映射结果为元素本身
+* 如果多个元素映射的键名相同，将保留最后一个元素映射的键值
+
+#### Examples:
+```
+zgg> items := [{value} for value in 1..10]
+[{value: 1}, {value: 2}, {value: 3}, {value: 4}, {value: 5}, {value: 6}, {value: 7}, {value: 8}, {value: 9}, {value: 10}]
+
+zgg> items.toMap(item => item.value % 3)
+{
+    1: {value: 10},
+    2: {value: 8},
+    0: {value: 9}
+}
+
+zgg> items.toMap(item => item.value % 3, 'value')
+{1: 10, 2: 8, 0: 9}
+
+zgg> items.toMap('value')
+{
+    7: {value: 7},
+    9: {value: 9},
+    10: {value: 10},
+    1: {value: 1},
+    3: {value: 3},
+    6: {value: 6},
+    8: {value: 8},
+    2: {value: 2},
+    4: {value: 4},
+    5: {value: 5}
+}
+```
+
+### <div id="toGroup">func toGroup(keyMapper?, valueMapper?)</div>
+
+根据key分组。根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为“所有映射到该键名的元素被valueMapper映射后的结果”的数组。
+
+注：
+* keyMapper和valueMapper都可以缺省，缺省时映射结果为元素本身
+* 同一分组元素顺序，为这些元素在原数组的顺序
+
+#### Examples:
+````
+zgg> items := [{value} for value in 1..10]
+[{value: 1}, {value: 2}, {value: 3}, {value: 4}, {value: 5}, {value: 6}, {value: 7}, {value: 8}, {value: 9}, {value: 10}]
+
+zgg> items.toGroup(item => item.value % 3)
+{
+    0: [{value: 3}, {value: 6}, {value: 9}],
+    1: [{value: 1}, {value: 4}, {value: 7}, {value: 10}],
+    2: [{value: 2}, {value: 5}, {value: 8}]
+}
+zgg> items.toGroup(item => item.value % 3, 'value')
+{
+    0: [3, 6, 9],
+    1: [1, 4, 7, 10],
+    2: [2, 5, 8]
+}
+````
+
 ### <div id="find">find(predict)</div>
 找到第一个符合predict的元素并返回。当找不到符合元素时返回undefined
 
