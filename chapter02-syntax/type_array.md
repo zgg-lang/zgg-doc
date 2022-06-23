@@ -194,6 +194,7 @@ for index, value in arr {
 根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为元素被valueMapper映射后的结果。
 
 注：
+* mapper的映射规则，请参考数组的map方法
 * keyMapper和valueMapper都可以缺省，缺省时映射结果为元素本身
 * 如果多个元素映射的键名相同，将保留最后一个元素映射的键值
 
@@ -232,6 +233,7 @@ zgg> items.toMap('value')
 根据key分组。根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为“所有映射到该键名的元素被valueMapper映射后的结果”的数组。
 
 注：
+* mapper的映射规则，请参考数组的map方法
 * keyMapper和valueMapper都可以缺省，缺省时映射结果为元素本身
 * 同一分组元素顺序，为这些元素在原数组的顺序
 
