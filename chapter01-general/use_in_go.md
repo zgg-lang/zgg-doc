@@ -102,6 +102,8 @@ func main() {
 
 ## 核心接口说明：
 
+----------
+
 ### func RunCode(script interface{}, opts ...ExecOption) (exported interface{}, err error)
 
 * 功能：运行代码模块
@@ -112,6 +114,7 @@ func main() {
   * exported: 运行成功后，返回这个代码模块导出的内容。为map[string]interface{}
   * err: 当且仅当运行失败时不为空
 
+-----------
 
 ### func Eval(expr interface{}, opts ...ExecOption) (interface{}, error)
 * 功能： 运行表达式求值
@@ -122,6 +125,7 @@ func main() {
   * exported: 运行成功后，返回这个表达式的返回值
   * err: 当且仅当运行失败时不为空
 
+-----------
 
 ### func CompileCode(code interface{}) (compiled ast.Node, err error)
 * 功能：编译代码模块
@@ -130,6 +134,8 @@ func main() {
 * 返回值：
   * compiled: 编译结果。如果入参code是预先编译好的，则直接返回code
   * err: 当且仅当运行失败时不为空
+
+-----------
 
 ### func CompileExpr(code interface{}) (ast.Node, error)
 * 功能：编译表达式
