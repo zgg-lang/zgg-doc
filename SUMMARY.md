@@ -12,7 +12,7 @@
 * [ZGG的变量](chapter02-syntax/variables.md)
 * [ZGG内置类型-字符串](chapter02-syntax/type_str.md)
 * [ZGG内置类型-数组](chapter02-syntax/type_array.md)
-* [ZGG的函数定义]()
+* [ZGG的函数](chapter02-syntax/function.md)
 * [条件判断](chapter02-syntax/condition.md)
   * [if语句]()
   * [switch语句]()
