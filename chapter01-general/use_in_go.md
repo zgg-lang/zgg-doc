@@ -13,6 +13,7 @@ go get github.com/zgg-lang/zgg-go
 ### 第二步：参考下面例子完成代码集成
 
 #### 1.简单使用Demo（展示一下核心接口的用法）
+
 ```go
 package main
 
@@ -34,21 +35,21 @@ const demoExpr = `n ** 2`
 
 func main() {
 	// 使用源码运行模块
-	if exported, err := zgg.RunCode(demoModule, zgg.Var{"n", zgg.Val(10)}); err != nil {
+	if exported, err := zgg.RunCode(demoModule, zgg.Var{"n", zgg.Val{10}}); err != nil {
 		panic(err)
 	} else {
-		fmt.Println("module exported result:", exported.(map[string]interface{})["result"].(int64))
+		fmt.Println("module exported result:", exported["result"].(int64))
 	}
 	// 使用预编译结果运行模块
 	if compiled, err := zgg.CompileCode(demoModule); err != nil {
 		panic(err)
-	} else if exported, err := zgg.RunCode(compiled, zgg.Var{"n", zgg.Val(10)}); err != nil {
+	} else if exported, err := zgg.RunCode(compiled, zgg.Var{"n", zgg.Val{10}}); err != nil {
 		panic(err)
 	} else {
-		fmt.Println("module exported result:", exported.(map[string]interface{})["result"].(int64))
+		fmt.Println("module exported result:", exported["result"].(int64))
 	}
 	// 使用源码进行表达式求值
-	if result, err := zgg.Eval(demoExpr, zgg.Var{"n", zgg.Val(10)}); err != nil {
+	if result, err := zgg.Eval(demoExpr, zgg.Var{"n", zgg.Val{10}}); err != nil {
 		panic(err)
 	} else {
 		fmt.Println("expr result:", result.(int64))
@@ -56,7 +57,7 @@ func main() {
 	// 使用预编译结果进行表达式求值
 	if compiled, err := zgg.CompileExpr(demoModule); err != nil {
 		panic(err)
-	} else if result, err := zgg.Eval(compiled, zgg.Var{"n", zgg.Val(10)}); err != nil {
+	} else if result, err := zgg.Eval(compiled, zgg.Var{"n", zgg.Val{10}}); err != nil {
 		panic(err)
 	} else {
 		fmt.Println("expr result:", result.(int64))
@@ -104,14 +105,14 @@ func main() {
 
 ----------
 
-### func RunCode(script interface{}, opts ...ExecOption) (exported interface{}, err error)
+### func RunCode(script interface{}, opts ...ExecOption) (exported map[string]interface{}, err error)
 
 * 功能：运行代码模块
 * 参数：
   * script: 待运行的代码，可为源码(string）或者预先编译好的代码对象(ast.Node)
   * opts: 需要注入到运行环境的内容。目前仅支持注入变量
 * 返回值：
-  * exported: 运行成功后，返回这个代码模块导出的内容。为map[string]interface{}
+  * exported: 运行成功后，返回这个代码模块导出的内容。err为nil时，exported一定不为nil
   * err: 当且仅当运行失败时不为空
 
 -----------
