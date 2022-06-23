@@ -125,6 +125,60 @@ zgg> seq(1, 10).filter(v => v % 2 == 0)
 ```
 
 ### <div id="reduce">reduce(reducer, initialValue?)</div>
+
+reduce() 方法接收一个函数reducer作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+
+参数说明：
+* reducer: 格式为：func(total, currenetValue, currentIndex, thisArray)。如果不设reduce，默认会把各个元素相加返回（即为数组求和）
+* initialValue: 可选。传递给函数的初始total值
+
+更多细节请看下面例子或参考Javascript里的表现。
+
+#### Examples:
+```
+zgg> seq(1, 10).reduce() // 不传reducer，默认为求和
+55
+
+zgg> seq('a', 'g').reduce() // 字符串的求和，即依次拼接
+abcdefg
+
+zgg> seq(1, 10).reduce((total, cur) => total + cur)
+55
+
+zgg> seq(1, 10).reduce((total, cur) => total + cur ** 2)
+385
+
+zgg> seq(1, 10).reduce((total, cur) => total + cur ** 2, 0)
+385
+
+zgg> seq(1, 10).reduce((total, cur) => total + cur ** 2, 100)
+485
+
+zgg> // 当没有传入initialValue时，第一次执行的total为array[0]，cur为array[1]
+zgg> seq(1, 5).reduce((total, cur) => {
+....   println('total is $total, cur is $cur')
+....   return total + cur
+.... })
+total is 1, cur is 2
+total is 3, cur is 3
+total is 6, cur is 4
+total is 10, cur is 5
+15
+
+zgg> // 当有传入initialValue时，第一次执行的total为initialValue，cur为array[0]
+zgg> seq(1, 5).reduce((total, cur) => {
+....   println('total is $total, cur is $cur')
+....   return total + cur
+.... }, 0)
+total is 0, cur is 1
+total is 1, cur is 2
+total is 3, cur is 3
+total is 6, cur is 4
+total is 10, cur is 5
+15
+```
+
+* 当有
 ### <div id="each">each(callback)</div>
 依次取数组元素，调用callback函数。以下两段代码时等价的：
 ```
