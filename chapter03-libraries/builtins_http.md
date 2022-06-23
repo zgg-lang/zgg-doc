@@ -28,7 +28,7 @@ http库提供了各种常用的http功能，包括：服务端、客户端、web
 
 ### <div id="postForm">func postForm(url, form, headers?)</div>
 
-以x-www-form-urlencoded方式往指定URL发起一次Post Form请求
+以x-www-form-urlencoded方式往指定URL发起一次Post Form请求。若请求失败则抛出异常。
 
 #### Examples
 '''
@@ -67,7 +67,7 @@ zgg> @http.postForm('https://httpbin.org/post', {
 
 ### <div id="postJson">func postJson(url, jsonValue, headers?)</div>
 
-往指定URL发起一次Post Json请求
+往指定URL发起一次Post Json请求。若请求失败则抛出异常。
 
 #### Examples
 '''
