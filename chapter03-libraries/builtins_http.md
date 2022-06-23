@@ -31,7 +31,7 @@ http库提供了各种常用的http功能，包括：服务端、客户端、web
 以x-www-form-urlencoded方式往指定URL发起一次Post Form请求。若请求失败则抛出异常。
 
 #### Examples
-'''
+```
 zgg> @http.postForm('https://httpbin.org/post', {
 ....   name: 'zgg',
 ....   values: [1, 2, 3],
@@ -63,14 +63,14 @@ zgg> @http.postForm('https://httpbin.org/post', {
   "origin": "137.59.101.43", 
   "url": "https://httpbin.org/post"
 }
-'''
+```
 
 ### <div id="postJson">func postJson(url, jsonValue, headers?)</div>
 
 往指定URL发起一次Post Json请求。若请求失败则抛出异常。
 
 #### Examples
-'''
+```
 zgg> @http.postJson('https://httpbin.org/post', {
 ....   name: 'zgg',
 ....   values: [1, 2, 3],
@@ -102,6 +102,12 @@ zgg> @http.postJson('https://httpbin.org/post', {
   "origin": "137.59.101.43", 
   "url": "https://httpbin.org/post"
 }
-'''
+```
 
 ### <div id="Request">type Request</div>
+
+### <div id="serve">func serve(listenAddr, handleFunc)</div>
+
+功能：启动一个web服务器，监听listenAddr地址（格式同go的http.ListenAndServe的第一个参数），并用handleFunc处理每个请求。
+
+serve函数是一个非常简便的提供http服务的方法，适用于对外提供简单服务。
