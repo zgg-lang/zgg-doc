@@ -177,8 +177,6 @@ total is 6, cur is 4
 total is 10, cur is 5
 15
 ```
-
-* 当有
 ### <div id="each">each(callback)</div>
 依次取数组元素，调用callback函数。以下两段代码时等价的：
 ```
