@@ -16,7 +16,7 @@
 * [条件判断](chapter02-syntax/condition.md)
   * [if语句]()
   * [switch语句]()
-  * [三目运算符]()
+  * [三目运算符](chapter02-syntax/condition_sanmu.md)
   * [when表达式](chapter02-syntax/condition_whenexpr.md)
 * [循环控制]()
   * [for循环]()
