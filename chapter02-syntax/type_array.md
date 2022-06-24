@@ -92,7 +92,7 @@ zgg> [v * 2 for v in 10]  // for .. in 10是for .. in 0..<10的简化写法
 
 ## 函数详解
 
-### <div id="map">map(mapper)</div>
+### <div id="map">Array.map(mapper)</div>
 将数组每个元素根据mapper映射到指定形式，存放到新的数组中并返回。原数组内容不变
 
 mapper支持多种不同类型：
@@ -114,7 +114,7 @@ zgg> [[1, 2, 3], [2, 3, 4], [3, 4, 5]].map(1)
 [2, 3, 4]
 ```
 
-### <div id="filter">filter(filterFunc)</div>
+### <div id="filter">Array.filter(filterFunc)</div>
 将原数组将符合条件的元素，依次放在新数组并返回。
 
 符合条件的定义是：filterFunc(item, index)返回一个真值。真值的定义请看条件判断章节
@@ -125,7 +125,7 @@ zgg> seq(1, 10).filter(v => v % 2 == 0)
 [2, 4, 6, 8, 10]
 ```
 
-### <div id="reduce">reduce(reducer, initialValue?)</div>
+### <div id="reduce">Array.reduce(reducer, initialValue?)</div>
 
 reduce() 方法接收一个函数reducer作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
 
@@ -178,7 +178,7 @@ total is 6, cur is 4
 total is 10, cur is 5
 15
 ```
-### <div id="each">each(callback)</div>
+### <div id="each">Array.each(callback)</div>
 依次取数组元素，调用callback函数。以下两段代码时等价的：
 ```
 arr.each(callback)
@@ -190,7 +190,7 @@ for index, value in arr {
 }
 ```
 
-### <div id="toMap">func toMap(keyMapper?, valueMapper?)</div>
+### <div id="toMap">Array.toMap(keyMapper?, valueMapper?)</div>
 
 根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为元素被valueMapper映射后的结果。
 
@@ -229,7 +229,7 @@ zgg> items.toMap('value')
 }
 ```
 
-### <div id="toGroup">func toGroup(keyMapper?, valueMapper?)</div>
+### <div id="toGroup">Array.toGroup(keyMapper?, valueMapper?)</div>
 
 根据key分组。根据数组内的元素，生成一个Object对象，其键名为数组元素被keyMapper映射后的结果，键值为“所有映射到该键名的元素被valueMapper映射后的结果”的数组。
 
@@ -257,7 +257,16 @@ zgg> items.toGroup(item => item.value % 3, 'value')
 }
 ````
 
-### <div id="find">find(predict)</div>
+### <div id="chunk">Array.chunk(chunkSize)</div>
+将数据元素按固定大小分段
+
+#### Examples:
+```
+zgg> seq(1, 10).chunk(4)
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10]]
+```
+
+### <div id="find">Array.find(predict)</div>
 找到第一个符合predict的元素并返回。当找不到符合元素时返回undefined
 
 符合条件的定义是：
@@ -272,7 +281,7 @@ zgg> seq(1, 10).find(20)
 undefined
 ```
 
-### <div id="findIndex">findIndex(predict)</div>
+### <div id="findIndex">Array.findIndex(predict)</div>
 与find相似，区别在于findIndex返回的是元素的下标，找不到的时候返回-1
 
 #### Examples:
