@@ -76,7 +76,8 @@ zgg> [v * 2 for v in 10]  // for .. in 10是for .. in 0..<10的简化写法
 | [sort](#sort ) | 原地排序 |
 | [join](#join ) | 将数组各元素依次拼接为一个字符串 |
 | [toMap](#toMap ) | 将数组元素转为一个Map |
-| [toGroup](#toGroup ) | 将数组元素分组 |
+| [toGroup](#toGroup ) | 将数组元素按自定义key分组 |
+| [chunk](#chunk ) | 将数组元素按顺序分组 |
 | [find](#find  )  | 查找数组中出现的第一个符合预期的元素,找不到则返回undefined |
 | [findIndex](#findIndex  )  | 查找数组中出现的第一个符合预期的元素的下标,找不到则返回-1 |
 | [times](#times  )  | // |
