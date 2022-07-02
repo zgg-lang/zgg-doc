@@ -2,16 +2,39 @@
 
 ZGG语言提供了强大的字符串功能。
 
-## 数组的声明与访问
+## 字符串的声明与访问
 
 ```
+// 普通的单行字符串
 'asdfadsfdsa'
+
+// ZGG所有字符串都支持多行
+'第一行
+第二行
+第三行'
+
+// 字符串内嵌入标识符和表达式
+zgg> name := 'zgg'
+zgg
+zgg> 'Hello, $name'
+Hello, zgg
+zgg> 'Hello, ${name.upper()}'
+Hello, ZGG
+
+// 如果在字符串开始的单引号前加一个r，表示该字符串内除了\'会转义为'外，其余字符都原样返回，也不会嵌入标识符和表达式。常用于写正则表达式
+zgg> r'Hello, \t\'${name.upper()}\''
+Hello, \t'${name.upper()}'
 ```
 
 ## 字符串的运算
 
 ### 加法
+
+字符串与任意类型相加，结果为字符串拼接
+
 ### 乘法
+
+字符串与整数n相乘，结果为字符串重复n遍
 
 ## 字符串的内置方法
 
@@ -188,3 +211,16 @@ Exception! str.decodeHex decode failed: encoding/hex: invalid byte: U+0021 '!'
 ### Str.decodeBase64()
 
 将Base64编码字符串解析为Bytes。如果字符串不是一个合法的Base64字符串则抛出异常
+
+### Str.fillParams(paramsMap)
+
+模板字符串填充内容，返回填充结果。
+
+#### Examples:
+```
+zgg> 'Name: {name} Age: {age}'.fillParams({
+....   name: 'ZGG',
+....   age: 1,
+.... })
+Name: ZGG Age: 1
+```
