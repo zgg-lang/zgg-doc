@@ -81,6 +81,10 @@ when表达式的有值形式，使用了一种特定的范围表达方式。
   * 大于等于: a..
     * 当且仅当value >= a时为真
 
+* 类型判断
+
+形式为：is TypeName
+
 ### 有值形式例子
 
 ```
@@ -90,4 +94,14 @@ fib := n => when n  {
     3..  -> fib(n-1) + fib(n-2)
     else -> 0
 }
+
+foo := v => println(v, when v {
+    is Float -> '是浮点型'
+    is Bool  -> '是布尔型'
+    is @time.Time -> '是时间类型'
+    is SomeCustomClass -> '是某个自定义的类型'
+    'a', 'b'  -> '不是a就是b'
+    1..10 -> '在1到10之间'
+    else  -> '不知道是啥'
+})
 ```
