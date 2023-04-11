@@ -15,6 +15,15 @@ curl -k https://www.zgg-lang.org/install/install.sh | bash
 
 官网地址是：[https://www.zgg-lang.org/](https://www.zgg-lang.org/)
 
+### 下载ZGG
+
+| 操作系统 | CPU类型 | 下载链接 |
+| -------- | ------- | -------- |
+| Linux    | AMD64   | [下载](https://zgglang-cn.oss-cn-guangzhou.aliyuncs.com/zgg-linux-amd64) |
+| MacOS    | AMD64   | [下载](https://zgglang-cn.oss-cn-guangzhou.aliyuncs.com/zgg-darwin-amd64) |
+| MacOS    | ARM64   | [下载](https://zgglang-cn.oss-cn-guangzhou.aliyuncs.com/zgg-darwin-arm64) |
+| Windows  | AMD64   | [下载](https://zgglang-cn.oss-cn-guangzhou.aliyuncs.com/zgg-windows-amd64.exe) |
+
 ## 运行ZGG
 
 ### 进入repl环境
