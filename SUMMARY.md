@@ -1,51 +1,46 @@
-# 目录
+# Summary
 
+* [ZGG 语言文档](README.md)
 
-### 语言特性
+## 一、语言特性概述
 
-* [ZGG简介](README.md)
-* [开始使用ZGG](chapter01-general/getstarted.md)
-* [在Go程序中嵌入ZGG脚本](chapter01-general/use_in_go.md)
+* [概述与设计定位](overview/README.md)
+* [安装、运行与 CLI](overview/install.md)
+* [快速上手](overview/quickstart.md)
 
-### ZGG基本语法
+## 二、基本语法
 
-* [ZGG的变量](chapter02-syntax/variables.md)
-* [ZGG内置类型-字符串](chapter02-syntax/type_str.md)
-* [ZGG内置类型-数组](chapter02-syntax/type_array.md)
-* [ZGG的函数](chapter02-syntax/function.md)
-* [条件判断](chapter02-syntax/condition.md)
-  * [if语句]()
-  * [switch语句]()
-  * [三目运算符](chapter02-syntax/condition_sanmu.md)
-  * [when表达式](chapter02-syntax/condition_whenexpr.md)
-* [循环控制]()
-  * [for循环]()
-  * [for in循环]()
-  * [while循环]()
-  * [do while循环]()
+* [语法总览与词法](syntax/README.md)
+* [变量与作用域](syntax/variables.md)
+* [类型系统](syntax/types.md)
+* [运算符与表达式](syntax/operators.md)
+* [字符串](syntax/strings.md)
+* [数组与对象](syntax/collections.md)
+* [控制流](syntax/control-flow.md)
+* [函数与闭包](syntax/functions.md)
+* [类与对象模型](syntax/classes.md)
+* [错误处理](syntax/errors.md)
+* [模块与导入](syntax/modules.md)
+* [并发编程](syntax/concurrency.md)
 
-### 标准库
+## 三、标准库
 
-* [内置标准库](chapter03-libraries/builtins.md)
-  * [base64 -- TODO]()
-  * [concurrent -- TODO]()
-  * [cron -- TODO]()
-  * [db -- TODO]()
-  * [dbop -- TODO]()
-  * [dom -- TODO]()
-  * [file -- TODO]()
-  * [go -- TODO]()
-  * [http](chapter03-libraries/builtins_http.md)
-  * [json](chapter03-libraries/builtins_json.md)
-  * [kv -- TODO]()
-  * [msgpack -- TODO]()
-  * [nsq -- TODO]()
-  * [ptable -- TODO]()
-  * [random](chapter03-libraries/builtins_random.md)
-  * [redis -- TODO]()
-  * [regexp -- TODO]()
-  * [sh -- TODO]()
-  * [sys -- TODO]()
-  * [template -- TODO]()
-  * [time](chapter03-libraries/builtins_time.md)
-  * [url -- TODO]()
+* [标准库总览](stdlib/README.md)
+* [内置函数与类型方法](stdlib/builtins.md)
+* [json 与 yaml](stdlib/json-yaml.md)
+* [file 文件操作](stdlib/file.md)
+* [time 时间处理](stdlib/time.md)
+* [regex 正则表达式](stdlib/regex.md)
+* [http 客户端与服务端](stdlib/http.md)
+* [db 数据库](stdlib/db.md)
+* [xlsx 表格](stdlib/xlsx.md)
+* [sys / sh / flag / ptable](stdlib/cli.md)
+* [template / url / base64 / hash / compress / binary](stdlib/text-codec.md)
+* [math / path / random / psutil / fsnotify](stdlib/math-path-misc.md)
+* [tcp / udp / kv / redis / nsq / 其他](stdlib/network.md)
+
+## 附录
+
+* [附录](appendix/README.md)
+  * [在 Go 中嵌入 ZGG](appendix/embed-in-go.md)
+  * [实现原理、性能与已知限制](appendix/internals.md)

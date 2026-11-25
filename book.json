@@ -1,4 +1,6 @@
 {
-    "title": "ZGG语言",
-    "language" : "zh-hans"
+  "title": "ZGG 语言文档",
+  "description": "ZGG 脚本语言：特性、语法与标准库",
+  "language": "zh-hans",
+  "author": "ZGG"
 }
